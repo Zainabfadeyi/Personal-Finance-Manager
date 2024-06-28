@@ -41,7 +41,27 @@ The Finance Manager App is a comprehensive tool designed to help users manage th
     pip install -r requirements.txt
     ```
 
-3. **Run the Server:**
+3. **Prepare the Database:**
+    - Make migrations to create the database schema:
+        - For Windows:
+            ```bash
+            python manage.py makemigrations
+            ```
+        - For macOS:
+            ```bash
+            python3 manage.py makemigrations
+            ```
+    - Apply the migrations to the database:
+        - For Windows:
+            ```bash
+            python manage.py migrate
+            ```
+        - For macOS:
+            ```bash
+            python3 manage.py migrate
+            ```
+            
+4. **Run the Server:**
     - For Windows:
         ```bash
         python manage.py runserver
