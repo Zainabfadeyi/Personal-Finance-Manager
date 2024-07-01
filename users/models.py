@@ -10,5 +10,3 @@ class CustomUser(AbstractUser):
                         primary_key=True)
    
    email = models.EmailField(unique=True, blank=False, null=False)
-   
-   

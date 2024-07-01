@@ -136,3 +136,7 @@ REST_FRAMEWORK = {
    'DEFAULT_FILTER_BACKENDS':
      ['django_filters.rest_framework.DjangoFilterBackend'],
 }
+
+DATETIME_FORMAT='%Y-%m-%d %H:%M:%S'
+L10N=False
+USE_TZ=False
