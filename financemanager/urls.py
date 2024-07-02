@@ -18,12 +18,21 @@ from django.contrib import admin
 from django.urls import path,include
 from users.views import RegisterationViewSet,LoginViewSet,RefreshViewset
 from rest_framework.routers import DefaultRouter
+from finance.views import ExpenseCategoryViewSet, ExpenseViewSet, SavingViewSet, BudgetViewSet, AccountViewSet, TransactionViewSet, GoalViewSet, NotificationViewSet
 
 router=DefaultRouter()
 
 router.register(r'auth/register', RegisterationViewSet,basename='auth-register')
 router.register(r'auth/login',LoginViewSet,basename='auth-login')
 router.register(r'auth/refresh',RefreshViewset,basename='auth-refresh')
+router.register(r'expense-category',ExpenseCategoryViewSet,basename='expense-category')
+router.register(r'expense',ExpenseViewSet,basename='expense')
+router.register(r'saving',SavingViewSet,basename='saving')
+router.register(r'budget',BudgetViewSet,basename='budget')
+router.register(r'account',AccountViewSet,basename='account')
+router.register(r'transaction',TransactionViewSet,basename='transaction')
+router.register(r'goal',GoalViewSet,basename='goal')
+router.register(r'notification',NotificationViewSet,basename='notification')
 
 
 urlpatterns = [
