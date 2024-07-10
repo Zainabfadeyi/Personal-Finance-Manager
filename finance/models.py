@@ -5,6 +5,7 @@ User = get_user_model()
 
 class ExpenseCategory(models.Model):
     name = models.CharField(max_length=50, null=False)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.name
@@ -13,7 +14,7 @@ class Expense(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     category = models.ForeignKey(ExpenseCategory, on_delete=models.CASCADE)
     amount = models.DecimalField(max_digits=12, decimal_places=2, null=False)
-    description = models.TextField(blank=True)
+    description = models.TextField()
     date = models.DateField(null=False)
     created_at = models.DateTimeField(auto_now_add=True)
 
@@ -24,7 +25,7 @@ class Expense(models.Model):
 class Saving(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     amount = models.DecimalField(max_digits=12, decimal_places=2, null=False)
-    description = models.TextField(blank=True)
+    description = models.TextField()
     date = models.DateField(null=False)
     created_at = models.DateTimeField(auto_now_add=True)
 
@@ -58,7 +59,7 @@ class Transaction(models.Model):
     transaction_type = models.CharField(max_length=50, null=False)
     category = models.CharField(max_length=50, null=False)
     amount = models.DecimalField(max_digits=12, decimal_places=2, null=False)
-    description = models.TextField(blank=True)
+    description = models.TextField()
     transaction_date = models.DateField(null=False)
     created_at = models.DateTimeField(auto_now_add=True)
 
@@ -70,7 +71,7 @@ class Goal(models.Model):
     name = models.CharField(max_length=100, null=False)
     target_amount = models.DecimalField(max_digits=12, decimal_places=2, null=False)
     current_amount = models.DecimalField(max_digits=12, decimal_places=2, default=0.00)
-    due_date = models.DateField(blank=True, null=True)
+    due_date = models.DateField()
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):

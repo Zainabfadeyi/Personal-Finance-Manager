@@ -140,3 +140,11 @@ REST_FRAMEWORK = {
 DATETIME_FORMAT='%Y-%m-%d %H:%M:%S'
 L10N=False
 USE_TZ=False
+from datetime import timedelta
+
+# Add or update your SIMPLE_JWT settings in settings.py
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=5),  # Example: Access token expires in 5 minutes
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=1),  # Example: Refresh token expires in 1 day
+    # You can add more SIMPLE_JWT settings as needed
+}

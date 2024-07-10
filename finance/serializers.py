@@ -4,39 +4,44 @@ from .models import ExpenseCategory, Expense, Saving, Budget, Account, Transacti
 class ExpenseCategorySerializer(serializers.ModelSerializer):
     class Meta:
         model = ExpenseCategory
-        fields = '__all__'
+        fields = ['id','name']
 
 class ExpenseSerializer(serializers.ModelSerializer):
     class Meta:
         model = Expense
-        fields = '__all__'
+        exclude=['user']
+        read_only_fields=['user','created_at']
 
 class SavingSerializer(serializers.ModelSerializer):
     class Meta:
         model = Saving
-        fields = '__all__'
+        exclude=['user']
 
 class BudgetSerializer(serializers.ModelSerializer):
     class Meta:
         model = Budget
-        fields = '__all__'
+        exclude=['user']
+
 
 class AccountSerializer(serializers.ModelSerializer):
     class Meta:
         model = Account
-        fields = '__all__'
+        exclude=['user']
+
 
 class TransactionSerializer(serializers.ModelSerializer):
     class Meta:
         model = Transaction
-        fields = '__all__'
+        exclude=['user']
+
 
 class GoalSerializer(serializers.ModelSerializer):
     class Meta:
         model = Goal
-        fields = '__all__'
+        exclude=['user']
+
 
 class NotificationSerializer(serializers.ModelSerializer):
     class Meta:
         model = Notification
-        fields = '__all__'
+        exclude=['user']

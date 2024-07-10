@@ -8,13 +8,14 @@ class CustomViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated,)
     http_method_names = ('get', 'post', 'put', 'patch', 'delete')
 
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user)
+
 class ExpenseCategoryViewSet(CustomViewSet):
     serializer_class = ExpenseCategorySerializer
 
     def get_queryset(self):
-        user_expenses = Expense.objects.filter(user=self.request.user)
-        category_ids = user_expenses.values_list('category', flat=True).distinct()
-        return ExpenseCategory.objects.filter(id__in=category_ids)
+        return ExpenseCategory.objects.filter(user=self.request.user)
 
 class ExpenseViewSet(CustomViewSet):
     serializer_class = ExpenseSerializer
