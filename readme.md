@@ -1,5 +1,6 @@
 # Finance Manager App
-
+#### API is available at:
+https://financemanager.pythonanywhere.com/api/
 ## Summary
 
 The Finance Manager App is a comprehensive tool designed to help users manage their personal finances with ease and precision. It offers a wide range of functionalities, from tracking expenses and savings to setting and monitoring budgets. The app provides detailed analytics and insights, enabling users to make informed financial decisions and achieve their savings goals.
@@ -77,7 +78,14 @@ Explore and interact with the application through the API, providing easy access
 - **Register User Endpoint:** `/api/auth/register` (Method: POST)
 - **User Login Endpoint:** `/api/auth/login` (Method: POST)
 - **Refresh Token Endpoint:**  `/api/auth/refresh` (Method: POST)
-
+- **Expense Category Endpoint:**  `/api/expense-category/` (Method: GET,POST,PUT,PATCH,DELETE)
+- **Expense Endpoint:**  `/api/expense/` (Method: GET,POST,PUT,PATCH,DELETE)
+- **Savings Endpoint:**  `/api/saving/` (Method: GET,POST,PUT,PATCH,DELETE)
+- **Budget Endpoint:**  `/api/budget/` (Method: GET,POST,PUT,PATCH,DELETE)
+- **Account Endpoint:**  `/api/account/` (Method: GET,POST,PUT,PATCH,DELETE)
+- **Transaction Endpoint:**  `/api/transaction/` (Method: GET,POST,PUT,PATCH,DELETE)
+- **Goal Endpoint:**  `/api/goal/` (Method: GET,POST,PUT,PATCH,DELETE)
+- **Notification Endpoint:**  `/api/notification/` (Method: GET,POST,PUT,PATCH,DELETE)
 
 The API documentation is available at the following endpoints:
 
@@ -108,7 +116,7 @@ The API documentation is available at the following endpoints:
     - Request Body:
         ```json
         {
-            "username": "",
+            "email": "",
             "password": ""
         }
         ```
@@ -141,6 +149,308 @@ The API documentation is available at the following endpoints:
         }
     ```
 
+- **Expense Category:**
+    - Endpoint: `/api/expense-category/`
+    - Method: `GET`
+
+    - Response Body: 
+    ```json
+        [
+            {
+                "id": "",
+                "name": ""
+            }
+        ]
+    ```
+
+    - Method: `POST`
+    - Request Body:
+        ```json
+        {
+            "name": "",
+        }
+        ```
+
+    - Response Body: 
+    ```json
+        {
+            "id": "",
+            "name":"",
+        }
+    ```
+
+- **Expense Endpoint:** 
+    - Endpoint: `/api/expense/` 
+    - Method: `GET` 
+    - Response Body: 
+    ```json
+        [
+            {
+                "id": "",
+                "amount": "",
+                "description": "",
+                "date": "",
+                "created_at": "",
+                "category": "",
+            }
+        ]
+    ```
+
+
+    - Method: `POST` 
+    - Request Body:
+        ```json
+        {
+            "amount": "",
+            "description": "",
+            "date": "YYYY-MM-DD",
+            "category": "primary key",
+        }
+        ```
+
+    - Response Body: 
+    ```json
+        {
+            "id": "",
+            "amount": "",
+            "description": "",
+            "date": "",
+            "created_at": "",
+            "category": "",
+        }
+    ```
+
+- **Savings Endpoint:**  
+    - Endpoint: `/api/saving/` 
+    - Method: `GET` 
+    - Response Body: 
+    ```json
+        [
+            {
+                "id": "",
+                "amount": "",
+                "description": "",
+                "date": "",
+                "created_at": ""
+            }
+        ]
+    ```
+
+    - Method: `POST` 
+    - Request Body:
+        ```json
+        {
+            "amount": "",
+            "date": "",
+            "description": "",
+        }
+        ```
+
+    - Response Body: 
+    ```json
+        {
+            "id": "",
+            "amount": "",
+            "description": "",
+            "date": "",
+            "created_at": ""
+        }
+    ```
+
+- **Budget Endpoint:**  
+    - Endpoint: `/api/budget/` 
+    - Method: `GET` 
+    - Response Body: 
+    ```json
+        [
+            {
+                "id": "",
+                "amount": "",
+                "start_date": "",
+                "end_date": "",
+                "created_at": "",
+                "category": ""
+            }
+        ]
+    ```
+
+    - Method: `POST` 
+    - Request Body:
+        ```json
+        {
+            "amount": "",
+            "start_date": "",
+            "end_date": "",
+            "category": "PK",
+        }
+        ```
+
+    - Response Body: 
+    ```json
+        {
+             "id": "",
+            "amount": "",
+            "start_date": "",
+            "end_date": "",
+            "created_at": "",
+            "category": ""
+        }
+    ```
+
+- **Account Endpoint:** 
+    - Endpoint:  `/api/account/` 
+    - Method: `GET` 
+    - Response Body: 
+    ```json
+        [
+            {
+                "id": "",
+                "name": "",
+                "account_type": "",
+                "balance": "",
+                "created_at": ""
+            }
+        ]
+    ```
+
+    - Method: `POST` 
+    - Request Body:
+        ```json
+        {
+            "name":"",
+            "account_type":"", 
+            "balance":"optional,can be edited", 
+        }
+        ```
+
+    - Response Body: 
+    ```json
+        {
+            "id": "",
+            "name": "",
+            "account_type": "",
+            "balance": "",
+            "created_at": ""
+        }
+    ```
+
+- **Transaction Endpoint:**  
+    - Endpoint: `/api/transaction/`
+    - Method: `GET` 
+    - Response Body: 
+    ```json
+        [
+            {
+                "id": "",
+                "transaction_type": "",
+                "category": "PK",
+                "amount": "",
+                "description": "",
+                "transaction_date": "",
+                "created_at": "",
+                "account": "PK"
+            }
+        ]
+    ```
+
+    - Method: `POST` 
+    - Request Body:
+        ```json
+        {
+        "transaction_type": "",
+        "category": "",
+        "amount": "",
+        "description": "",
+        "transaction_date": "",
+        "account": ""
+        }
+        ```
+
+    - Response Body: 
+    ```json
+        {
+        "id": "",
+        "transaction_type": "",
+        "category": "PK",
+        "amount": "",
+        "description": "",
+        "transaction_date": "",
+        "created_at": "",
+        "account": "PK"
+        }
+    ```
+
+- **Goal Endpoint:**  
+    - Endpoint: `/api/goal/` 
+    - Method: `GET` 
+    - Response Body: 
+    ```json
+        [
+            {
+                "id": "",
+                "name": "",
+                "target_amount": "",
+                "current_amount": "",
+                "due_date": "",
+                "created_at": ""
+            }
+        ]
+    ```
+
+    - Method: `POST` 
+    - Request Body:
+        ```json
+        {
+            "name": "",
+            "target_amount":"",
+            "due_date":""
+        }
+        ```
+
+    - Response Body: 
+    ```json
+        {
+            "id": "",
+            "name": "",
+            "target_amount": "",
+            "current_amount": "",
+            "due_date": "",
+            "created_at": ""
+        }
+    ```
+
+- **Notification Endpoint:**  
+    - Endpoint: `/api/notification/` 
+    - Method: `GET` 
+    - Response Body: 
+    ```json
+        [
+            {
+                "id": "",
+                "message": "",
+                "is_read": "boolean",
+                "created_at": ""
+            }
+        ]
+    ```
+
+    - Method: `POST` 
+    - Request Body:
+        ```json
+        {
+        "message":""
+        }
+        ```
+
+    - Response Body: 
+    ```json
+        {
+            "id": "",
+            "message": "",
+            "is_read": "boolean",
+            "created_at": ""
+        }
+    ```
 
 ## Considerations
 

@@ -1,7 +1,6 @@
 from rest_framework import viewsets,status
-from .serializers import CustomUserSerializer,RegisterationSerializer,LoginSerializer
-from .models import CustomUser
-from rest_framework.permissions import IsAuthenticated,AllowAny
+from .serializers import RegisterationSerializer,LoginSerializer
+from rest_framework.permissions import AllowAny
 from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework.response import Response
 from rest_framework_simplejwt.exceptions import TokenError, InvalidToken
