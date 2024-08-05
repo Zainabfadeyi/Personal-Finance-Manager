@@ -116,7 +116,7 @@ The API documentation is available at the following endpoints:
     - Request Body:
         ```json
         {
-            "username": "",
+            "email": "",
             "password": ""
         }
         ```
