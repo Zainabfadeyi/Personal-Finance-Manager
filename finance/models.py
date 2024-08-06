@@ -3,6 +3,7 @@ from django.db import models
 from django.contrib.auth import get_user_model
 from django.contrib.auth.models import User
 
+
 User = get_user_model()
 
 class ExpenseCategory(models.Model):
@@ -138,10 +139,12 @@ class Transaction(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)  # Uncomment this line
 
     category = models.CharField(max_length=50, choices=EXPENSE_CATEGORY_CHOICES + [("Income", "Income")], null=False)
+
     amount = models.DecimalField(max_digits=12, decimal_places=2, null=False)
     description = models.TextField()
     transaction_date = models.DateField(null=False)
     created_at = models.DateTimeField(auto_now_add=True)
+
     transaction_type = models.CharField(max_length=10, choices=TRANSACTION_TYPE_CHOICES, null=False)  # Add this field
 
     def save(self, *args, **kwargs):
@@ -151,13 +154,13 @@ class Transaction(models.Model):
 
     def __str__(self):
         return f"{self.user.username} - {self.transaction_type} of {self.amount} in {self.category} on {self.transaction_date}"
+
 class Goal(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     name = models.CharField(max_length=100, null=False)
     target_amount = models.DecimalField(max_digits=12, decimal_places=2, null=False)
     current_amount = models.DecimalField(max_digits=12, decimal_places=2, default=0.00)
     # due_date = models.DateField(null=False, default=datetime.date.today)
-    created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return f"{self.user.username} - Goal: {self.name} Target: {self.target_amount}"

@@ -33,6 +33,7 @@ router.register(r'saving',SavingViewSet,basename='saving')
 router.register(r'budget',BudgetViewSet,basename='budget')
 router.register(r'account',AccountViewSet,basename='account')
 # router.register(r'transaction',TransactionViewSet,basename='transaction')
+
 router.register(r'goal',GoalViewSet,basename='goal')
 router.register(r'notification',NotificationViewSet,basename='notification')
 
@@ -44,5 +45,4 @@ urlpatterns = [
     path("api/transactions", TransactionViewSet.as_view({'get': 'list', 'post': 'create'}), name='user-transactions'),
     path("api/accounts", AccountViewSet.as_view({'get': 'list', 'post': 'create'}), name='user-accounts'),
 ]
-
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

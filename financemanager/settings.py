@@ -146,8 +146,10 @@ from datetime import timedelta
 
 # Add or update your SIMPLE_JWT settings in settings.py
 SIMPLE_JWT = {
+
     'ACCESS_TOKEN_LIFETIME': timedelta(hours=100),  # Example: Access token expires in 100 hours
     'REFRESH_TOKEN_LIFETIME': timedelta(days=7),  # Example: Refresh token expires in 7 day
+
     # You can add more SIMPLE_JWT settings as needed
 }
 # Allow all hosts
@@ -156,6 +158,7 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",  # Allow requests from this origin
 ]
 CORS_ALLOW_CREDENTIALS = True
+
 
 
 STATIC_URL = "static/"

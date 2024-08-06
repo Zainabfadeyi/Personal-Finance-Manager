@@ -4,6 +4,7 @@ from .serializers import ExpenseCategorySerializer, ExpenseSerializer, SavingSer
 from .models import ExpenseCategory, Expense, Saving, Budget, Account, Transaction, Goal, Notification
 from rest_framework.response import Response
 
+
 class CustomViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated,)
     http_method_names = ('get', 'post', 'put', 'patch', 'delete')
@@ -41,6 +42,7 @@ class AccountViewSet(CustomViewSet):
     def get_queryset(self):
         return Account.objects.filter(user=self.request.user)
 
+
 # class TransactionViewSet(CustomViewSet):
 #     serializer_class = TransactionSerializer
     
@@ -72,6 +74,7 @@ class TransactionViewSet(CustomViewSet):
             serializer.save(user_id=user_id)
             return Response(serializer.data, status=201)
         return Response(serializer.errors, status=400)
+
 
 class GoalViewSet(CustomViewSet):
     serializer_class = GoalSerializer
