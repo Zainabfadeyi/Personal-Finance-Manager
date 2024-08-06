@@ -1,11 +1,12 @@
 from rest_framework import viewsets,status
-from .serializers import CustomUserSerializer,RegisterationSerializer,LoginSerializer
-from .models import CustomUser
-from rest_framework.permissions import IsAuthenticated,AllowAny
+from .serializers import RegisterationSerializer,LoginSerializer
+from rest_framework.permissions import AllowAny
 from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework.response import Response
 from rest_framework_simplejwt.exceptions import TokenError, InvalidToken
 from rest_framework_simplejwt.views import TokenRefreshView
+from rest_framework.permissions import IsAuthenticated
+from .serializers import CustomUserSerializer
     
 class RegisterationViewSet(viewsets.ModelViewSet):
     serializer_class = RegisterationSerializer
@@ -49,3 +50,12 @@ class RefreshViewset(viewsets.ViewSet,TokenRefreshView):
             raise InvalidToken(e.args[0])
         return Response(serializer.validated_data,
             status=status.HTTP_200_OK)
+    
+class UserDetailsView(viewsets.ViewSet):
+    permission_classes = [IsAuthenticated]
+
+    def list(self, request):
+        user = request.user  # Get the authenticated user
+        serializer = CustomUserSerializer(user)  # Serialize user data
+        return Response(serializer.data, status=status.HTTP_200_OK)  # Return user details
+

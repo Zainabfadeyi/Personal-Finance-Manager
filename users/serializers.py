@@ -8,13 +8,12 @@ from django.contrib.auth import get_user_model
 from django.core.exceptions import ValidationError
 
 class CustomUserSerializer(serializers.ModelSerializer):
-    id = serializers.UUIDField(source='public_id',
-    read_only=True, format='hex')
+    id = serializers.UUIDField(read_only=True, format='hex')  # Assuming public_id is the user ID
 
     class Meta:
-        model=CustomUser
-        fields=['id','username','email']
-
+        model = CustomUser
+        fields = ['id', 'username', 'email']
+        
 class RegisterationSerializer(serializers.Serializer):
     username = serializers.CharField()
     email = serializers.EmailField()
